@@ -16,9 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/todo',function (){
-	return response()->json([
-		['id'=>1,'title'=>'AAAAAAAA','completed'=>false],
-		['id'=>2,'title'=>'BBBBBBB','completed'=>false],
-	]);
-})->middleware('cors');
+
+Route::middleware('cors')->resource('/todos','TodosController');
